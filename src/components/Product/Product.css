@@ -31,6 +31,16 @@
   color: #111;
 }
 
+.product > button:hover {
+  background: #f2d280
+}
+
+.product > button:active {
+  background: #f2dda7;
+
+}
+
+
 .product__price {
   margin-top: 5px;
 }
