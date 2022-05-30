@@ -41,7 +41,7 @@ function Footer() {
       </div>
       <div className="footer__bottom">
         <img src="http://pngimg.com/uploads/amazon/amazon_PNG11.png" className="footer__logo" />
-        <div className="footer__bottom__two">
+        <div className="footerg__bottom__two">
           <h6>Australia</h6>
           <h6>Brazil</h6>
           <h6>Canada</h6>
