@@ -12,10 +12,37 @@ import { useStateValue } from "../Context/StateProvider";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import Footer from "../Footer/Footer";
+import {
+  makeStyles,
+  CssBaseline,
+  createTheme,
+  ThemeProvider,
+} from "@material-ui/core";
 
-const promise = loadStripe(
-  "pk_test_uT7G5NbGUZfNbo9cMW0otsdc"
-);
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#333996",
+      light: "#3c44b126",
+    },
+    secondary: {
+      main: "#f83245",
+      light: "#f8324526",
+    },
+    background: {
+      default: "#eaeded",
+    },
+  },
+  overrides: {
+    MuiAppBar: {
+      root: {
+        transform: "translateZ(0)",
+      },
+    },
+  },
+});
+
+const promise = loadStripe("pk_test_uT7G5NbGUZfNbo9cMW0otsdc");
 
 function App() {
   const [{}, dispatch] = useStateValue();
@@ -45,36 +72,38 @@ function App() {
 
   return (
     <Router>
-      <div className="app">
-        <Switch>
-          <Route path="/orders">
-            <Header />
-            <Orders />
-            <Footer />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/checkout">
-            <Header />
-            <Checkout />
-            <Footer />
-          </Route>
-          <Route path="/payment">
-            <Header />
-            <Elements stripe={promise}>
-              <Payment />
-            </Elements>
-            <Footer />
-          </Route>
-          <Route path="/">
-            <Header />
-            <Home />
-            <Footer />
-          </Route>
-        </Switch>
-        
-      </div>
+      <ThemeProvider theme={theme}>
+        <div className="app">
+          <Switch>
+            <Route path="/orders">
+              <Header />
+              <Orders />
+              <Footer />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/checkout">
+              <Header />
+              <Checkout />
+              <Footer />
+            </Route>
+            <Route path="/payment">
+              <Header />
+              <Elements stripe={promise}>
+                <Payment />
+              </Elements>
+              <Footer />
+            </Route>
+            <Route path="/">
+              <Header />
+              <Home />
+              <Footer />
+            </Route>
+          </Switch>
+        </div>
+        <CssBaseline />
+      </ThemeProvider>
     </Router>
   );
 }
