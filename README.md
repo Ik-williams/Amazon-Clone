@@ -1,4 +1,4 @@
-deployed app: https://fir-4b9fa.web.app/
+deployed app: https://fir-4b9fa.web.app
 <br />
 
 <div align="center">
